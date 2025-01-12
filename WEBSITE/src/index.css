@@ -1473,7 +1473,7 @@ header {
   }
 
   #img1 {
-    background: url("img/45.jpg");
+    background: url("/img/45.jpg");
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1510,7 +1510,7 @@ header {
 
 
   #img2 {
-    background: url("img/33.jpg");
+    background: url("/img/33.jpg");
     background-size: cover;
     overflow: hidden;
     /* background-position: center; */
@@ -1616,7 +1616,7 @@ header {
 
 
   #img4 {
-    background: url('img/7-1.jpg');
+    background: url('/img/7-1.jpg');
     background-position: center;
     background-size: cover;
     overflow: hidden;
@@ -1687,7 +1687,7 @@ header {
 
 
   #img6 {
-    background: url('img/8-2.jpg');
+    background: url('/img/8-2.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1740,7 +1740,7 @@ header {
 
 
   #img7 {
-    background: url('img/39.jpg');
+    background: url('/img/39.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1795,7 +1795,7 @@ header {
 
 
   #img8 {
-    background: url('img/10.jpg');
+    background: url('/img/10.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1848,7 +1848,7 @@ header {
 
 
   #img9 {
-    background: url('img/19.jpg');
+    background: url('/img/19.jpg');
     background-size: cover;
     overflow: hidden;
     background-position: center;
@@ -1901,7 +1901,7 @@ header {
 
 
   #img10 {
-    background: url('img/9.jpg');
+    background: url('/img/9.jpg');
     background-size: cover;
     overflow: hidden;
     background-position: center;
@@ -1955,7 +1955,7 @@ header {
 
 
   #img11 {
-    background: url('img/2.1.jpg');
+    background: url('/img/2.1.jpg');
     background-size: cover;
     overflow: hidden;
     background-position: center;
@@ -2008,7 +2008,7 @@ header {
 
 
   #img12 {
-    background: url('img/21.jpg');
+    background: url('/img/21.jpg');
     background-size: cover;
     overflow: hidden;
     background-position: center;
@@ -2061,7 +2061,7 @@ header {
 
 
   #img13 {
-    background: url('img/23.jpg');
+    background: url('/img/23.jpg');
     background-size: cover;
     overflow: hidden;
     background-position: center;
@@ -2115,7 +2115,7 @@ header {
 
 
   #img14 {
-    background: url('img/29.jpg');
+    background: url('/img/29.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
