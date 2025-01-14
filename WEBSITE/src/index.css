@@ -549,7 +549,7 @@ header {
 
   .youtube-link {
     text-decoration: none;
-    height: 300px;
+    height: 400px;
     width: 15%;
     border-radius: 8px;
     overflow: hidden;
@@ -1200,13 +1200,19 @@ header {
   }
 
   .footer {
-    .footer-about {
-      width: 100%;
+    .footer-container {
+      flex-direction: column;
+
+      .footer-about {
+        width: 100%;
+      }
+
+      .footer-links {
+        width: 100%;
+      }
     }
 
-    .footer-links {
-      width: 100%;
-    }
+
   }
 
 
@@ -1267,8 +1273,8 @@ header {
 
     .youtube-link {
       margin-top: 20px;
-      width: 80%;
-      height: 400px;
+      width: 73%;
+      height: 440px;
     }
   }
 
@@ -1355,16 +1361,26 @@ header {
     }
   }
 
-  .footer {
-    .footer-about {
-      width: 100%;
-    }
-
-    .footer-links {
+  .sec8{
+    .image_insta{
       width: 100%;
     }
   }
+  .footer {
+    .footer-container {
+      flex-direction: column;
 
+      .footer-about {
+        width: 100%;
+      }
+
+      .footer-links {
+        width: 100%;
+      }
+    }
+
+
+  }
 
 }
 
@@ -2166,6 +2182,9 @@ header {
 
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
 
 .project-sec2 {
   text-align: center;
@@ -2266,7 +2285,21 @@ header {
     border-radius: 10px;
     z-index: 1000;
     text-align: left;
+    overflow-y: auto;
   }
+
+  
+
+  .popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
 
   .popup-2 {
     position: fixed;
@@ -2524,15 +2557,19 @@ header {
 }
 
 
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .project-sec2 {
     height: auto;
     border: 2px solid;
     flex-direction: column;
 
     .hotspot {
-      height: 10px;
-      width: 10px;
+      height: 12px;
+      width: 12px;
+    }
+    .popup , .popup-2{
+      top: 50%;
+      left: 50%;
     }
 
     .interactive-floor-plan {

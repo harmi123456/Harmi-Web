@@ -13,10 +13,10 @@ export default function Projects() {
 
 
   useEffect(() => {
-    window.scrollTo(0,0)
-  },[])
+    window.scrollTo(0, 0)
+  }, [])
 
-  
+
   const [selectedSection, setSelectedSection] = useState(null);
   const [selectedSection_2, setSelectedSection_2] = useState(null);
 
@@ -78,9 +78,30 @@ export default function Projects() {
 
   const closePopup = () => {
     setSelectedSection(null);
+    document.body.classList.remove("no-scroll");
   };
 
 
+
+  useEffect(() => {
+    if (selectedSection) {
+      document.body.classList.add("no-scroll");
+
+      // Add scroll lock and alert detection
+      const handleScroll = (e) => {
+        e.preventDefault();
+        alert("Please close the popup before scrolling!");
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: false });
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [selectedSection]);
 
   //second
 
@@ -136,8 +157,30 @@ export default function Projects() {
 
   const closePopup_2 = () => {
     setSelectedSection_2(null);
+    document.body.classList.remove("no-scroll");
   };
 
+  useEffect(() => {
+    if (selectedSection_2) {
+      document.body.classList.add("no-scroll");
+
+      // Add scroll lock and alert detection
+      const handleScroll = (e) => {
+        e.preventDefault();
+        alert("Please close the popup before scrolling!");
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: false });
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [selectedSection_2]);
+
+  
 
   //project explore
 
@@ -527,12 +570,12 @@ export default function Projects() {
         </div>
 
         <nav className={isNavVisible ? 'show' : ''}>
-          <Link to='/'>HOME</Link>
-          <Link to='/projects' style={{ color: 'green', fontWeight: 'bold' }}>PROJECTS</Link>
-          <Link to='/services'>SERVICES</Link>
-          <Link to='/aboutUs'>AboutUs</Link>
-          <Link to='/blog'>BLOG</Link>
-          <Link to='/contactUs'>ContactUs</Link>
+          <Link to='/'>Home</Link>
+          <Link to='/projects' style={{ color: 'green', fontWeight: 'bold' }}>Projects</Link>
+          <Link to='/services'>Services</Link>
+          <Link to='/aboutUs'>About Us</Link>
+          <Link to='/blog'>Blog</Link>
+          <Link to='/contactUs'>Contact Us</Link>
         </nav>
 
         <div className="icon">
@@ -547,9 +590,6 @@ export default function Projects() {
           </a>
           <a href="https://youtube.com/@rangraginterior?si=ysiDjGfY8xrtHrgY" target='_blank'>
             <div className="insta"><i class="fa-brands fa-youtube"></i></div>
-          </a>
-          <a href="https://www.justdial.com/Rajkot/Rangrag-Studio-Near-Haridarshan-School-Mavdi/0281PX281-X281-240707141959-Z2N8_BZDET?catid=&checkin=&checkout=&vpfs=&stxt=%20Interior%203D%20Visualization%20Services&nid=11466419&stype=category_list&search=Interior-3D-Visualization-Services&area=Near%20Haridarshan%20School%20Mavdi&type=Architectural%20Walkthroughs&totalJdReviews=undefined&bdmsgtype=7&bdcaptiontype=6&bdpage=rsltpge&slectedDimgTag=&show_open_abd=0" target='_blank'>
-            <div className="insta"><i class="fa-brands fa-google"></i></div>
           </a>
         </div>
 

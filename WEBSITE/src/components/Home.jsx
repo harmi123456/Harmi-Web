@@ -88,14 +88,15 @@ export default function Home() {
 
                 <nav className={isNavVisible ? 'show' : ''}>
                     <Link to='/' style={{ color: 'green', fontWeight: 'bold' }}>HOME</Link>
-                    <Link to='/projects'>PROJECTS</Link>
-                    <Link to='/services'>SERVICES</Link>
-                    <Link to='/aboutUs'>AboutUs</Link>
-                    <Link to='/blog'>BLOG</Link>
-                    <Link to='/contactUs'>ContactUs</Link>
+                    <Link to='/projects'>Projects</Link>
+                    <Link to='/services'>Services</Link>
+                    <Link to='/aboutUs'>About us</Link>
+                    <Link to='/blog'>Blog</Link>
+                    <Link to='/contactUs'>Contact us</Link>
                 </nav>
 
                 <div className="icon">
+
                     <a href="https://www.instagram.com/rangrag_studio?igsh=MWljc3U0YnZvenlteQ==" target='_blank'>
                         <div className='insta'><i class="fa-brands fa-instagram"></i></div>
                     </a>
@@ -108,9 +109,7 @@ export default function Home() {
                     <a href="https://youtube.com/@rangraginterior?si=ysiDjGfY8xrtHrgY" target='_blank'>
                         <div className="insta"><i class="fa-brands fa-youtube"></i></div>
                     </a>
-                    <a href="https://www.justdial.com/Rajkot/Rangrag-Studio-Near-Haridarshan-School-Mavdi/0281PX281-X281-240707141959-Z2N8_BZDET?catid=&checkin=&checkout=&vpfs=&stxt=%20Interior%203D%20Visualization%20Services&nid=11466419&stype=category_list&search=Interior-3D-Visualization-Services&area=Near%20Haridarshan%20School%20Mavdi&type=Architectural%20Walkthroughs&totalJdReviews=undefined&bdmsgtype=7&bdcaptiontype=6&bdpage=rsltpge&slectedDimgTag=&show_open_abd=0" target='_blank'>
-                        <div className="insta"><i class="fa-brands fa-google"></i></div>
-                    </a>
+                   
                 </div>
 
             </header>
@@ -129,7 +128,7 @@ export default function Home() {
                 <section class="services-overview">
                     <div class="container">
                         <h2 class="section-title">Our Interior Design Services</h2>
-                        <p class="section-subtitle">Transforming your spaces with creativity, functionality, and elegance.</p>
+                        <p class="section-subtitle">Transforming your spaces with creativity, functionality and elegance.</p>
                         <div class="services-grid">
                             <div class="service-box">
                                 <img src="/img/23.jpg" alt="Residential Design" class="service-img" />
@@ -221,7 +220,7 @@ export default function Home() {
                         </div>
 
                         <div class="cta-button">
-                            <a href="#consultation" class="button">Schedule a Consultation</a>
+                            <Link to="/contactUs" className="button">Schedule a Consultation</Link>
                         </div>
                     </div>
 
@@ -588,8 +587,8 @@ export default function Home() {
                 <div className="image_insta button button2">
                     <img src="/img/40.jpg" alt="Instagram" />
                 </div>
-                <div style={{ width: '25%' }} className="image_insta button button2">
-                    <img src="/img/4.2.2.jpg" alt="" />
+                <div className="image_insta button button2">
+                    <img src="/residential/b3.jpg" alt="" />
                 </div>
                 <div className="image_insta button button2">
                     <img src="/img/35.jpg" alt="" />
@@ -603,6 +602,7 @@ export default function Home() {
 
             <footer className="footer">
                 <div className="footer-container">
+                    
                     <div className="footer-about">
                         <h2>About Us</h2>
                         <p>

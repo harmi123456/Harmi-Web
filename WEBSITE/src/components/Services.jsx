@@ -137,12 +137,12 @@ export default function Services() {
         </div>
 
         <nav className={isNavVisible ? 'show' : ''}>
-          <Link to='/'>HOME</Link>
-          <Link to='/projects'>PROJECTS</Link>
-          <Link to='/services' style={{ color: 'green', fontWeight: 'bold' }}>SERVICES</Link>
-          <Link to='/aboutUs'>AboutUs</Link>
-          <Link to='/blog'>BLOG</Link>
-          <Link to='/contactUs'>ContactUs</Link>
+          <Link to='/'>Home</Link>
+          <Link to='/projects'>Projects</Link>
+          <Link to='/services' style={{ color: 'green', fontWeight: 'bold' }}>Services</Link>
+          <Link to='/aboutUs'>About Us</Link>
+          <Link to='/blog'>Blog</Link>
+          <Link to='/contactUs'>Contact Us</Link>
         </nav>
 
         <div className="icon">
@@ -157,9 +157,6 @@ export default function Services() {
           </a>
           <a href="https://youtube.com/@rangraginterior?si=ysiDjGfY8xrtHrgY" target='_blank'>
             <div className="insta"><i class="fa-brands fa-youtube"></i></div>
-          </a>
-          <a href="https://www.justdial.com/Rajkot/Rangrag-Studio-Near-Haridarshan-School-Mavdi/0281PX281-X281-240707141959-Z2N8_BZDET?catid=&checkin=&checkout=&vpfs=&stxt=%20Interior%203D%20Visualization%20Services&nid=11466419&stype=category_list&search=Interior-3D-Visualization-Services&area=Near%20Haridarshan%20School%20Mavdi&type=Architectural%20Walkthroughs&totalJdReviews=undefined&bdmsgtype=7&bdcaptiontype=6&bdpage=rsltpge&slectedDimgTag=&show_open_abd=0" target='_blank'>
-            <div className="insta"><i class="fa-brands fa-google"></i></div>
           </a>
         </div>
 
