@@ -19,9 +19,9 @@ export default function Home() {
 
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     }, [])
-    
+
 
     //QUIZ
 
@@ -70,7 +70,26 @@ export default function Home() {
 
     const toggleIcons = () => {
         setShowIcons(!showIcons);
-    };   
+    };
+
+
+
+    //privacy
+    useEffect(() => {
+        // Disable right-click
+        const handleContextMenu = (e) => {
+            e.preventDefault();
+            alert("🔒 Content Protected!");
+        };
+     
+        document.addEventListener("contextmenu", handleContextMenu);
+
+    
+        return () => {
+            document.removeEventListener("contextmenu", handleContextMenu);
+        };
+
+    }, []);
 
 
     return (
@@ -83,7 +102,7 @@ export default function Home() {
                 </div>
 
                 <div className="logo">
-                    <img src="/img/logo.png" alt="" />
+                    <img src="/img/logo.png" alt="Protected" />
                 </div>
 
                 <nav className={isNavVisible ? 'show' : ''}>
@@ -109,7 +128,7 @@ export default function Home() {
                     <a href="https://youtube.com/@rangraginterior?si=ysiDjGfY8xrtHrgY" target='_blank'>
                         <div className="insta"><i class="fa-brands fa-youtube"></i></div>
                     </a>
-                   
+
                 </div>
 
             </header>
@@ -602,7 +621,7 @@ export default function Home() {
 
             <footer className="footer">
                 <div className="footer-container">
-                    
+
                     <div className="footer-about">
                         <h2>About Us</h2>
                         <p>

@@ -10,7 +10,7 @@ export default function Services() {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }, [])
 
   const [selectedService, setSelectedService] = useState(null);
@@ -87,7 +87,7 @@ export default function Services() {
   //slider
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  
+
   const slides = [
     { id: 1, className: "one" },
     { id: 2, className: "two" },
@@ -121,6 +121,25 @@ export default function Services() {
   const toggleIcons = () => {
     setShowIcons(!showIcons);
   };
+
+
+  //privacy
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("🔒 Content Protected!");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+
+  }, []);
+
 
 
   return (

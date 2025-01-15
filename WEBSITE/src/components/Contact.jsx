@@ -8,17 +8,17 @@ export default function Contact() {
   const toggleNavbar = () => {
     setNavVisible(!isNavVisible);
   };
-  
+
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }, [])
 
 
   //WhatsApp icons
   const phoneNumber = "919328623606";
 
-  const openWhatsApp = () => {  
+  const openWhatsApp = () => {
     const url = `https://wa.me/${phoneNumber}`;
     window.open(url, "_blank");
   };
@@ -54,6 +54,26 @@ export default function Contact() {
       alert(res.message);
     }
   };
+
+
+
+  //privacy
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("🔒 Content Protected!");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+
+  }, []);
+
 
 
 

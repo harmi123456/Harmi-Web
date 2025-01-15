@@ -9,7 +9,7 @@ export default function About() {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }, [])
 
   //WhatsApp icons
@@ -30,6 +30,27 @@ export default function About() {
   const toggleIcons = () => {
     setShowIcons(!showIcons);
   };
+
+
+
+  //privacy
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("🔒 Content Protected!");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+
+  }, []);
+
+
 
   return (
     <div id='sec1'>

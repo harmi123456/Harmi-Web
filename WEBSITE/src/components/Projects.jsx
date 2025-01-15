@@ -180,7 +180,7 @@ export default function Projects() {
     }
   }, [selectedSection_2]);
 
-  
+
 
   //project explore
 
@@ -555,6 +555,25 @@ export default function Projects() {
     setShowIcons(!showIcons);
   };
 
+
+  //privacy
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("🔒 Content Protected!");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+
+  }, []);
+
+  
 
   return (
     <div id='sec1'>

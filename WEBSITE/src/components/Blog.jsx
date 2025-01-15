@@ -9,8 +9,8 @@ export default function Blog() {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0)
-  },[])
+    window.scrollTo(0, 0)
+  }, [])
 
   //WhatsApp icons
   const phoneNumber = "919328623606";
@@ -30,6 +30,25 @@ export default function Blog() {
   const toggleIcons = () => {
     setShowIcons(!showIcons);
   };
+
+
+  //privacy
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("🔒 Content Protected!");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+
+  }, []);
+
 
 
   return (
