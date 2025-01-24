@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Modal from "react-modal";
 
 
 export default function Projects() {
@@ -573,7 +574,90 @@ export default function Projects() {
 
   }, []);
 
-  
+
+  //project-sec-1
+
+  const images = [
+    "/residential/Scene 21.jpg",
+    "/img/52.jpg",
+    "/residential/Scene 36_1.jpg",
+    "/residential/3.jpg",
+    "/img/Scene 10.jpg",
+    "/residential/3.jpg",
+    "/residential/4.jpg",
+    "/residential/5.jpg",
+    "/residential/14.jpg",
+    "/residential/c1.jpg",
+    "/residential/Scene 21.jpg",
+    "/residential/Scene 37.jpg",
+    "/residential/Scene 35_1.jpg",
+    "/residential/Scene 30(1).jpg",
+    "/corporate/1.jpg",
+    "/corporate/1-1.jpg",
+    "/corporate/2-1.jpg",
+    "/corporate/3.jpg",
+    "/corporate/r-4.jpg",
+    "/corporate/r-10.jpg",
+    "/corporate/r-9.jpg",
+    "/img/Scene 1.jpg",
+    "/img/Scene 4.jpg",
+    "/img/Scene 3_3(1).jpg",
+  ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const openModal = (index) => {
+    setCurrentImageIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToPrev = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      goToNext();
+    } else if (event.key === "ArrowLeft") {
+      goToPrev();
+    }
+  };
+
+  const handleTouchStart = (event) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (event) => {
+    if (!touchStartX) return;
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const diffX = touchStartX - touchEndX;
+
+    if (diffX > 50) {
+      goToNext();
+    } else if (diffX < -50) {
+      goToPrev();
+    }
+
+    setTouchStartX(null);
+  };
+
 
   return (
     <div id='sec1'>
@@ -615,110 +699,92 @@ export default function Projects() {
       </header>
 
 
-      <div className="container-fluid">
 
-        <div class="row">
 
-          <div class="col col-12 col-xl-8 col-md-6 col-sm-12" id="img1">
-            <div class="details-window down">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div>
+
+        <div className="pr-sec-1">
+          {images.map((src, index) => (
+            <div className="pr_img-container" key={index} onClick={() => openModal(index)}>
+              <img src={src} alt={`Scene ${index + 1}`} className="pr_img" />
+              <div className="lock-icon">
+                {/* <i className="fas fa-lock"></i> */}
+                <img src="/img/lock.gif" alt="" />
+              </div>
             </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img2">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-3 col-md-6 col-sm-12" id="img3">
-            <video src="/img/vid-1.mp4" controls autoPlay muted loops></video>
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-7 col-md-6 col-sm-12" id="img4">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-2 col-md-6 col-sm-12" id="img5">
-            <video src="/img/vid-2.mp4" autoPlay muted loops controls  ></video>
-          </div>
-
-          <div class="col col-12 col-xl-6 col-md-6 col-sm-12" id="img6">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-6 col-md-6 col-sm-12" id="img7">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img8">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img9">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img10">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-2  col-md-6 col-sm-12" id="img3">
-            <video style={{ height: '120%' }} src="/img/vid-3.mp4" controls muted autoPlay loops></video>
-
-          </div>
-
-          <div class="col col-12 col-xl-7 col-md-6 col-sm-12" id="img4">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-3 col-md-6 col-sm-12" id="img5">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-8 col-md-6 col-sm-12" id="img11">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img12">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-6 col-md-6 col-sm-12" id="img6">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-6 col-md-6 col-sm-12" id="img7">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-4 col-md-6 col-sm-12" id="img13">
-            <div class="details-window down">
-            </div>
-          </div>
-
-          <div class="col col-12 col-xl-8 col-md-6 col-sm-12" id="img14">
-            <div class="details-window down">
-            </div>
-          </div>
-
+          ))}
         </div>
+
+
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          onAfterOpen={() => window.addEventListener("keydown", handleKeyDown)}
+          onAfterClose={() => window.addEventListener("keydown", handleKeyDown)}
+        >
+          <div onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="touch-img">
+
+            <button onClick={closeModal} className="close-model" >
+              ✕
+            </button>
+            <button onClick={goToPrev} className="arrow-buttons" style={{ left: "10px" }} >
+              {/* ◀ */}
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <img src={images[currentImageIndex]} alt="" className="model-img" />
+
+            <button onClick={goToNext} className="arrow-buttons" style={{ right: '10px' }} >
+              {/* ▶ */}
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+
+
+
+          </div>
+
+
+        </Modal>
 
 
 
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       <div className="project-sec2">

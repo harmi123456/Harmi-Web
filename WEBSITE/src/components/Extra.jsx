@@ -1,63 +1,137 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 
-export default function AutoSlider() {
-  const sliderRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Extra() {
+  const images = [
+    "/residential/Scene 21.jpg",
+    "/img/52.jpg",
+    "/residential/Scene 36_1.jpg",
+    "/residential/3.jpg",
+    "/img/Scene 10.jpg",
+    "/residential/3.jpg",
+    "/residential/4.jpg",
+    "/residential/5.jpg",
+    "/residential/14.jpg",
+    "/residential/c1.jpg",
+    "/residential/Scene 21.jpg",
+    "/residential/Scene 37.jpg",
+    "/residential/Scene 35_1.jpg",
+    "/residential/Scene 30(1).jpg",
+    "/corporate/1.jpg",
+    "/corporate/1-1.jpg",
+    "/corporate/2-1.jpg",
+    "/corporate/3.jpg",
+    "/corporate/r-4.jpg",
+    "/corporate/r-10.jpg",
+    "/corporate/r-9.jpg",
+    "/img/Scene 1.jpg",
+    "/img/Scene 4.jpg",
+    "/img/Scene 3_3(1).jpg",
+  ];
 
-  const slideToIndex = (index) => {
-    const slider = sliderRef.current;
-    const totalSlides = slider.children.length;
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
 
-    // Ensure the index loops correctly
-    const newIndex = (index + totalSlides) % totalSlides;
-    setCurrentIndex(newIndex);
-
-    // Scroll to the calculated position
-    slider.scrollTo({
-      left: slider.offsetWidth * newIndex,
-      behavior: "smooth",
-    });
+  const openModal = (index) => {
+    setCurrentImageIndex(index);
+    setIsOpen(true);
   };
 
-  // Auto sliding logic
-  useEffect(() => {
-    const interval = setInterval(() => {
-      slideToIndex(currentIndex + 1);
-    }, 100); // Automatically scroll every 3 seconds
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [currentIndex]);
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToPrev = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      goToNext();
+    } else if (event.key === "ArrowLeft") {
+      goToPrev();
+    }
+  };
+
+  const handleTouchStart = (event) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (event) => {
+    if (!touchStartX) return;
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const diffX = touchStartX - touchEndX;
+
+    if (diffX > 50) {
+      goToNext();
+    } else if (diffX < -50) {
+      goToPrev();
+    }
+
+    setTouchStartX(null);
+  };
 
   return (
-    <div className="slider-container">
-      <div className="slider-track" ref={sliderRef}>
-        <div className="slider-item" style={{ background: "#ff7f7f" }}>
-          <h1>Slide 1</h1>
-        </div>
-        <div className="slider-item" style={{ background: "#7fafff" }}>
-          <h1>Slide 2</h1>
-        </div>
-        <div className="slider-item" style={{ background: "#7fff7f" }}>
-          <h1>Slide 3</h1>
-        </div>
-        <div className="slider-item" style={{ background: "#ffff7f" }}>
-          <h1>Slide 4</h1>
-        </div>
+    <div>
+
+      <div className="pr-sec-1">
+        {images.map((src, index) => (
+          <div className="pr_img-container" key={index} onClick={() => openModal(index)}>
+            <img src={src} alt={`Scene ${index + 1}`} className="pr_img" />
+            <div className="lock-icon">
+              {/* <i className="fas fa-lock"></i> */}
+              <img src="/img/lock.gif" alt="" />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Manual Controls */}
-      <button
-        className="slider-control prev"
-        onClick={() => slideToIndex(currentIndex - 1)}
+
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        onAfterOpen={() => window.addEventListener("keydown", handleKeyDown)}
+        onAfterClose={() => window.addEventListener("keydown", handleKeyDown)}
       >
-        &#8249; {/* Left Arrow */}
-      </button>
-      <button
-        className="slider-control next"
-        onClick={() => slideToIndex(currentIndex + 1)}
-      >
-        &#8250; {/* Right Arrow */}
-      </button>
+        <div onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="touch-img">
+
+          <button onClick={closeModal} className="close-model" >
+            ✕
+          </button>
+          <button onClick={goToPrev} className="arrow-buttons" style={{ left: "10px" }} >
+            {/* ◀ */}
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <img src={images[currentImageIndex]} alt="" className="model-img" />
+
+          <button onClick={goToNext} className="arrow-buttons" style={{ right: '10px' }} >
+            {/* ▶ */}
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+
+
+
+        </div>
+
+
+      </Modal>
+
+
+
     </div>
   );
 }
