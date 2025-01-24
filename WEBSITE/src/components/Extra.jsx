@@ -36,11 +36,14 @@ export default function Extra() {
   const openModal = (index) => {
     setCurrentImageIndex(index);
     setIsOpen(true);
+    window.addEventListener("keydown", handleKeyDown);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    window.removeEventListener("keydown", handleKeyDown);
   };
+
 
   const goToNext = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -104,6 +107,8 @@ export default function Extra() {
         onRequestClose={closeModal}
         onAfterOpen={() => window.addEventListener("keydown", handleKeyDown)}
         onAfterClose={() => window.addEventListener("keydown", handleKeyDown)}
+        className="custom-modal"
+        overlayClassName="custom-overlay"
       >
         <div onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="touch-img">
 
@@ -124,9 +129,21 @@ export default function Extra() {
 
 
 
-
         </div>
-
+        
+        {/* Image gallery below modal */}
+        <div className="image-gallery">
+          {images.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt={`Thumbnail ${index + 1}`}
+              className={`thumbnail ${index === currentImageIndex ? "active-thumbnail" : ""
+                }`}
+              onClick={() => setCurrentImageIndex(index)}
+            />
+          ))}
+        </div>
 
       </Modal>
 
